@@ -6,13 +6,15 @@ var smoke = {
 		smoke.bodyload();
 	}, false);
 	},
-
+        initiated: true,
 	bodyload: function(){
-		if (!document.getElementById('smoke-out')){
+                  
+		if (!document.getElementById('smoke-out') && !smoke.initiated){
 			var ff = document.createElement('div');
 					ff.setAttribute('id','smoke-out');
 					ff.setAttribute('class','smoke-base');
 					document.body.appendChild(ff);
+                        smoke.initiated = true;
 		}
 	},
 
@@ -21,6 +23,7 @@ var smoke = {
 	},
 
 	build: function(e,f){
+                if(!smoke.initiated) { smoke.bodyload() }
 		e = e.replace(/\n/g,'<br />');
 		e = e.replace(/\r/g,'<br />');
 		var prompt = '';
@@ -209,12 +212,6 @@ var smoke = {
 	}
 
 };
-
-// and start this
-smoke.pageload();
-
-
-
 
 // future
 
