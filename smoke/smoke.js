@@ -6,7 +6,7 @@ var smoke = {
 		smoke.bodyload();
 	}, false);
 	},
-        initiated: true,
+        initiated: false,
 	bodyload: function(){
                   
 		if (!document.getElementById('smoke-out') && !smoke.initiated){
