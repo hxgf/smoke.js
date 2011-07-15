@@ -41,8 +41,8 @@ var smoke = {
 			
 			if (f.type == 'prompt' || f.type == 'confirm'){
 				buttons +=
-					'<button id="'+f.type+'-cancel" class="cancel">Cancel</button>'+
-					'<button id="'+f.type+'-ok">OK</button>';
+					'<button id="'+f.type+'-cancel" class="cancel">'+askButtons[1]+'</button>'+
+					'<button id="'+f.type+'-ok">'+askButtons[0]+'</button>';
 			}
 			
 			buttons += '</div>';
