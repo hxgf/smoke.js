@@ -155,6 +155,7 @@ var smoke = {
 					smoke.destroy(f.type);
 					f.callback.call(f.scope, j.value);
 				} else if(e.keyCode == 27) {
+					smoke.destroy(f.type);
 					f.callback.call(f.scope, false);
 				}
 			};
