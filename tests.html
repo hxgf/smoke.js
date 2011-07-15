@@ -5,12 +5,6 @@
 
 	<title>smoke.js</title> 
 
-
-	<script>
-	
-		var askButtons = ['Sim','Não'];
-		
-	</script>
 	<!-- include these -->
 	<link rel="stylesheet" href="smoke/smoke.css" type="text/css" media="screen" />  
 	<script src="smoke/smoke.js" type="text/javascript"></script>
@@ -24,17 +18,18 @@
 
 </head>
 <body>
-	<a onClick="javascript:confirmMsg();"> Clique em min ! </a>
+	<a onClick="javascript:confirmMsg();"> Click on me! </a>
 		
 	<script>
+
 	function confirmMsg(){
-		smoke.confirm('Quer ir para o Google?',function(e){
+		smoke.confirm('Want to go to Google?',function(e){
 			if (e){
 				window.location = "http://www.google.com";
 			}else{
-				smoke.signal('Ok, fique por aqui.', 2000);
+				smoke.signal("Allright, i'll let you stay here.", 2000);
 			}
-		});
+		},{'ok':'yeah','cancel':'noo'});
 	}
 	</script>
 </body>

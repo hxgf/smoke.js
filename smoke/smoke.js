@@ -20,7 +20,7 @@ var smoke = {
   	smoke.bodyload();
 	},
 
-	build: function(e,f){
+	build: function(e,f,p){
 		e = e.replace(/\n/g,'<br />');
 		e = e.replace(/\r/g,'<br />');
 		var prompt = '';
@@ -30,6 +30,18 @@ var smoke = {
 						'<input id="dialog-input" type="text" />'+
 					'</div>';
 		}
+		
+		/* AskButtons */
+		var askButtons = [];
+		
+		if(p){			
+			askButtons['ok'] = p['ok'];
+			askButtons['cancel'] = p['cancel']
+		}else{
+			askButtons['ok'] = 'OK';
+			askButtons['cancel'] = 'Cancel';
+		}
+		
 		
 		var buttons = '';
 		if (f.type != 'signal'){
@@ -41,8 +53,8 @@ var smoke = {
 			
 			if (f.type == 'prompt' || f.type == 'confirm'){
 				buttons +=
-					'<button id="'+f.type+'-cancel" class="cancel">'+askButtons[1]+'</button>'+
-					'<button id="'+f.type+'-ok">'+askButtons[0]+'</button>';
+					'<button id="'+f.type+'-cancel" class="cancel">'+askButtons['cancel']+'</button>'+
+					'<button id="'+f.type+'-ok">'+askButtons['ok']+'</button>';
 			}
 			
 			buttons += '</div>';
@@ -198,8 +210,8 @@ var smoke = {
 		smoke.build(e,{type:'signal',timeout:f});
 	},
 	
-	confirm: function(e,f){
-		smoke.build(e,{type:'confirm',callback:f});
+	confirm: function(e,f,p){
+		smoke.build(e,{type:'confirm',callback:f},p);
 		
 	},
 	
