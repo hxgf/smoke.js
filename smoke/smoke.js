@@ -20,7 +20,7 @@ var smoke = {
   	smoke.bodyload();
 	},
 
-	build: function(e,f){
+	build: function(e,f,p){
 		e = e.replace(/\n/g,'<br />');
 		e = e.replace(/\r/g,'<br />');
 		var prompt = '';
@@ -30,6 +30,22 @@ var smoke = {
 						'<input id="dialog-input" type="text" />'+
 					'</div>';
 		}
+		
+		
+		/* AskButtons */
+		if(f.type == 'confirm'){
+			
+			var config = {
+				'ok': 'Ok',
+				'cancel': 'Cancel'
+			};
+			
+			if (p){ $.extend(config, p);}
+	
+			
+		}
+
+		
 		
 		var buttons = '';
 		if (f.type != 'signal'){
@@ -41,8 +57,8 @@ var smoke = {
 			
 			if (f.type == 'prompt' || f.type == 'confirm'){
 				buttons +=
-					'<button id="'+f.type+'-cancel" class="cancel">Cancel</button>'+
-					'<button id="'+f.type+'-ok">OK</button>';
+					'<button id="'+f.type+'-cancel" class="cancel">'+config.cancel+'</button>'+
+					'<button id="'+f.type+'-ok">'+config.ok+'</button>';
 			}
 			
 			buttons += '</div>';
@@ -198,8 +214,8 @@ var smoke = {
 		smoke.build(e,{type:'signal',timeout:f});
 	},
 	
-	confirm: function(e,f){
-		smoke.build(e,{type:'confirm',callback:f});
+	confirm: function(e,f,p){
+		smoke.build(e,{type:'confirm',callback:f},p);
 		
 	},
 	
