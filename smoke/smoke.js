@@ -31,16 +31,20 @@ var smoke = {
 					'</div>';
 		}
 		
-		/* AskButtons */
-		var askButtons = [];
 		
-		if(p){			
-			askButtons['ok'] = p['ok'];
-			askButtons['cancel'] = p['cancel']
-		}else{
-			askButtons['ok'] = 'OK';
-			askButtons['cancel'] = 'Cancel';
+		/* AskButtons */
+		if(f.type == 'confirm'){
+			
+			var config = {
+				'ok': 'Ok',
+				'cancel': 'Cancel'
+			};
+			
+			if (p){ $.extend(config, p);}
+	
+			
 		}
+
 		
 		
 		var buttons = '';
@@ -53,8 +57,8 @@ var smoke = {
 			
 			if (f.type == 'prompt' || f.type == 'confirm'){
 				buttons +=
-					'<button id="'+f.type+'-cancel" class="cancel">'+askButtons['cancel']+'</button>'+
-					'<button id="'+f.type+'-ok">'+askButtons['ok']+'</button>';
+					'<button id="'+f.type+'-cancel" class="cancel">'+config.cancel+'</button>'+
+					'<button id="'+f.type+'-ok">'+config.ok+'</button>';
 			}
 			
 			buttons += '</div>';
