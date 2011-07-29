@@ -143,6 +143,7 @@ var smoke = {
 			var h = document.getElementById('alert-ok-'+f.newid+'');
 		      smoke.listen(h,"click", function(){
 						smoke.destroy(f.type, f.newid);
+						f.callback(true);
 					});
 	
 	
@@ -151,6 +152,7 @@ var smoke = {
 	  		if (!e) e = window.event;
 				if (e.keyCode == 13 || e.keyCode == 32 || e.keyCode == 27){
 					smoke.destroy(f.type, f.newid);
+					f.callback(true);
 				}
 			};
 		}
@@ -258,13 +260,13 @@ var smoke = {
 
 	},
 
-	alert: function(e,f){
+	alert: function(e,f,g){
 		if (typeof(f) != 'object'){
 			f = false;
 		}
 		
 		var id = smoke.newdialog();
-		smoke.build(e,{type:'alert',params:f,newid:id});
+		smoke.build(e,{type:'alert',params:f,callback:g,newid:id});//callback = g for compatibility with legacy
 	},
 	
 	signal: function(e,f){
