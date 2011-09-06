@@ -113,7 +113,7 @@ var smoke = {
 	finishbuild: function(e,f,box){
 	
 		var ff = document.getElementById('smoke-out-'+f.newid+'');
-				ff.className = 'smoke-base smoke-visible';		
+				ff.className = 'smoke-base smoke-visible smoke-' + f.type;		
 				ff.innerHTML = box;
 				
 		while (ff.innerHTML == ""){
