@@ -46,7 +46,7 @@ var smoke = {
 		if (f.type == 'prompt'){
 			prompt = 
 				'<div class="dialog-prompt">'+
-						'<input id="dialog-input-'+f.newid+'" type="text" />'+
+						'<input id="dialog-input-'+f.newid+'" type="text" ' + (f.params.value ? 'value="' + f.params.value + '"' : '') + ' />'+
 					'</div>';
 		}
 
@@ -133,6 +133,10 @@ var smoke = {
 					if (f.type == 'prompt' || f.type == 'confirm'){
 						f.callback(false);
 					}
+					
+					if (f.type == 'alert' && typeof f.callback !== 'undefined') {
+						f.callback();
+					}					
 				});
 	
 	
@@ -143,6 +147,9 @@ var smoke = {
 			var h = document.getElementById('alert-ok-'+f.newid+'');
 		      smoke.listen(h,"click", function(){
 						smoke.destroy(f.type, f.newid);
+						if (typeof f.callback !== 'undefined') {
+							f.callback();
+						}					
 					});
 	
 	
@@ -151,6 +158,10 @@ var smoke = {
 	  		if (!e) e = window.event;
 				if (e.keyCode == 13 || e.keyCode == 32 || e.keyCode == 27){
 					smoke.destroy(f.type, f.newid);
+					if (typeof f.callback !== 'undefined') {
+						f.callback();
+					}					
+
 				}
 			};
 		}
@@ -258,13 +269,13 @@ var smoke = {
 
 	},
 
-	alert: function(e,f){
+	alert: function(e,f,g){
 		if (typeof(f) != 'object'){
 			f = false;
 		}
 		
 		var id = smoke.newdialog();
-		smoke.build(e,{type:'alert',params:f,newid:id});
+		smoke.build(e,{type:'alert',callback:g,params:f,newid:id});
 	},
 	
 	signal: function(e,f){
