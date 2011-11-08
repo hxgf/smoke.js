@@ -151,7 +151,7 @@
 				'</div>';
 	
 			if (!smoke.init){		
-				smoke.listen(window,"load", function(){
+				contentLoaded(window, function() {
 					smoke.finishbuild(e,f,box);
 				});
 			} else{
