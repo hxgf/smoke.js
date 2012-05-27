@@ -298,6 +298,10 @@ var smoke = {
 		
 		smoke.i = 0;
 		box.innerHTML = '';
+		if ( box.parentNode ) {
+			box.parentNode.removeChild( box );
+		}
+
 	},
 
 	alert: function (e, f, g) {
