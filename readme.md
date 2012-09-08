@@ -1,3 +1,12 @@
+IN THIS FORK:
+- Enables signals to have custom classes applied
+
+ALSO SEE:
+- A branch on this fork called Animated or view the [project page](http://argyleink.github.com/smoke.js/)
+- It uses a sweet css3 animation framework to control the in and out animations of signals
+
+
+
 Notify or get approval from your users quickly and with style. This alert system uses css animations and background (so there are no images or js animation code...so it's really lightweight).
 
 It's easy to implement and really easy to change the style.

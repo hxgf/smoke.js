@@ -1,10 +1,11 @@
 /*jslint browser: true, onevar: true, undef: true, nomen: false, eqeqeq: true, bitwise: true, regexp: true, newcap: true, immed: true */
 
 var smoke = {
-  smoketimeout: [],
-  init: false,
-  zindex: 1000,
-  i: 0,
+  smoketimeout: 	[],
+  signaltimeout: 	3000,
+  init: 		false,
+  zindex: 		100,
+  i: 			0,
 
 	bodyload: function(id){
 		var ff = document.createElement('div');
@@ -273,7 +274,7 @@ var smoke = {
 	{
 		smoke.smoketimeout[f.newid] = setTimeout(function () {
 			smoke.destroy(f.type, f.newid);
-		}, f.timeout);
+		}, f.params.timeout || this.signaltimeout);
 	},
 	
 			
@@ -323,8 +324,7 @@ var smoke = {
 		var id = smoke.newdialog();
 		smoke.build(e, {
 			type:    'signal',
-			timeout: f,
-			params:  false,
+			params:  f,
 			newid:   id
 		});
 	},
