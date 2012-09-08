@@ -2,7 +2,7 @@ IN THIS FORK:
 - Enables signals to have custom classes applied
 
 ALSO SEE:
-- A branch on this fork called Animated or [http://argyleink.github.com/smoke.js/](click here to read about) it
+- A branch on this fork called Animated or [Click here](http://argyleink.github.com/smoke.js/) it
 - It uses a sweet css3 animation framework to control the in and out animations of signals
 
 
