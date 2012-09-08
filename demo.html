@@ -6,7 +6,7 @@
 
 	<!-- include these -->
 	<link rel="stylesheet" href="smoke/smoke.css" type="text/css" media="screen" />  
-	<script src="smoke/smoke.min.js" type="text/javascript"></script>
+	<script src="smoke/smoke.js" type="text/javascript"></script>
 	
 	<!-- you only need this if you want to include a theme...duh -->
 	<link id="theme" rel="stylesheet" href="smoke/themes/default.css" type="text/css" media="screen" />
@@ -61,7 +61,7 @@
 		
 		<div id="demo">
 			<a onClick="javascript:smoke.alert('this is a normal alert');">smoke.alert('this is a normal alert');</a>
-			<a onClick="javascript:smoke.signal('this goes away after a sec');">smoke.signal('this goes away after a sec');</a>
+			<a onClick="javascript:smoke.signal('this goes away after a few seconds');">smoke.signal('this goes away after a few seconds');</a>
 			<a onClick="javascript:tstconfirm();">smoke.confirm('behaves like a normal confirm?');</a>
 			<a onClick="javascript:tstprompt();">smoke.prompt('behaves like a normal prompt?');</a>
 		</div>
@@ -141,8 +141,13 @@ smoke.confirm('this is still cool, yeah?',function(e){
 		
 		<p>Maybe you want to specify different styles for a specific alert. Just add a classname parameter like this:</p>
 		
-		<pre>smoke.alert('this is cool', {classname:"myclassname"});</pre>
+		<pre>smoke.alert('this is cool', {classname:'myclassname'});</pre>
 		
+
+		<p>Open a signal with a custom timeout and a custom class like this:</p>
+
+		<pre>smoke.signal('this goes away after 5 seconds', { timeout:5000, classname:'sweet' });</pre>
+
 
 		<hr />
 
