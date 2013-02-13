@@ -1,0 +1,154 @@
+.smoke-base {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0;
+  -moz-transition: all .3s;
+  -webkit-transition: opacity .3s;
+  -o-transition: all .3s;
+  transition: all .3s;
+}
+
+.smoke-base.smoke-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.smokebg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.smoke-base .dialog {
+  position: absolute
+}
+
+.dialog-prompt {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.dialog-buttons {
+  margin: 10px 0 5px 0
+}
+
+.smoke {
+  font-family: sans-serif;
+  /*font-weight: bold; */
+  text-align: center;
+  font-size: 24px; /* Tamaño de la FUENTE */
+  line-height: 130%;
+  /* Borde redondeado */
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	border: 3;
+}
+
+.dialog-buttons button {
+  display: inline-block;
+  vertical-align: baseline;
+  cursor: pointer;
+  font-family: sans-serif;
+  font-style: normal;
+  text-decoration: none;
+  border: 0;
+  outline: 0;
+  margin: 0 5px;
+  -webkit-background-clip: padding-box;
+  font-size: 13px;
+  line-height: 13px;
+  font-weight: bold;
+  padding: 9px 12px;
+}
+
+.dialog-prompt input {
+  margin: 0;
+  border: 0;
+  font-family: sans-serif;
+  outline: none;
+  border: 10px solid #333;
+  width: 97%;
+  background-color: #fff; /* Color de FONDO para INPUT */
+  font-size: 15px;
+  padding: 5px;
+}
+
+.smoke-base {
+  background: rgba(0,0,0,.3); 
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#90000000,endColorstr=#900000000);
+}
+/* Localización del diálogo */
+.smoke-base .dialog {
+  top: 25%;
+  left: 25%;
+  width: 50%;
+}
+
+.smoke-base .dialog-inner {
+  padding: 15px
+}
+
+.smoke {
+  /*text-transform: uppercase; */ /* Muestra el texto SIEMPRE en MAYUSCULA */
+  background-color: #B9FFB9; /*rgba(185,255,185,1); /* Color de FONDO del MENSAJE */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff,endColorstr=#91E475);
+
+	/* Safari 4+ y Chrome 1+ */  
+	background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #ffffff), color-stop(1, #91E475));  
+	
+	/* Safari 5.1+ y Chrome 10+ */  
+	background-image:-webkit-linear-gradient(#ffffff, #91E475);  
+	
+	/* Firefox 3.6+ */  
+	background-image:-moz-linear-gradient(top, #ffffff, #91E475);  
+	
+	/* Opera 11.10+ */  
+	background-image:-o-linear-gradient(top, #ffffff, #91E475); 
+}
+
+.dialog-buttons button {
+  border-radius: 5px;
+  /* text-transform: uppercase; */ /* Muestra el texto SIEMPRE en MAYUSCULA */
+  background-color: #00C105; /* rgba(0,89,0,.9);  COLOR de FONDO de los BOTONES */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#006F00,endColorstr=#006F00);
+	/* Safari 4+ y Chrome 1+ */  
+	background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #006F00), color-stop(1, #006F00));  
+	
+	/* Safari 5.1+ y Chrome 10+ */  
+	background-image:-webkit-linear-gradient(#006F00, #006F00);  
+	
+	/* Firefox 3.6+ */  
+	background-image:-moz-linear-gradient(top, #006F00, #006F00);  
+	
+	/* Opera 11.10+ */  
+	background-image:-o-linear-gradient(top, #006F00, #006F00); 
+  color: #fff; /* Color del TEXTO de los Botones */
+}
+
+button.cancel {
+  background-color: #C0C0C0 /* rgba(0,89,0,.7); /* COLOR de FONDO de los BOTONES */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#C0C0C0,endColorstr=#C0C0C0);
+	/* Safari 4+ y Chrome 1+ */  
+	background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #C0C0C0), color-stop(1, #C0C0C0));  
+	
+	/* Safari 5.1+ y Chrome 10+ */  
+	background-image:-webkit-linear-gradient(#C0C0C0, #C0C0C0);  
+	
+	/* Firefox 3.6+ */  
+	background-image:-moz-linear-gradient(top, #C0C0C0, #C0C0C0);  
+	
+	/* Opera 11.10+ */  
+	background-image:-o-linear-gradient(top, #C0C0C0, #C0C0C0);
+  color: #000;
+}
+
+.queue{
+display:none;
+}
