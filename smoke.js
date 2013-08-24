@@ -416,17 +416,21 @@
 			});
 		},
 		
-		signal: function (e, f, g) {
+		signal: function (e, f, g, h) {
 			if (typeof g === 'undefined') {
 				g = 5000;
 			}
 			
+			if (typeof h === 'undefined') {
+				h = false;
+			}
+
 			var id = smoke.newdialog();
 			smoke.build(e, {
 				type:    'signal',
 				callback: f,
 				timeout: g,
-				params:  false,
+				params:  h,
 				newid:   id
 			});
 		},
