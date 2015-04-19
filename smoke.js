@@ -152,19 +152,21 @@
 			if (smoke.smoketimeout[f.newid]) {
 				clearTimeout(smoke.smoketimeout[f.newid]);
 			}
-	
-			smoke.listen(
-				document.getElementById('smoke-bg-'+f.newid),
-				"click", 
-				function () {
-					smoke.destroy(f.type, f.newid);
-					if (f.type === 'prompt' || f.type === 'confirm' || f.type === 'quiz') {
-						f.callback(false);
-					} else if (f.type === 'alert' && typeof f.callback !== 'undefined') {
-						f.callback();
-					}	
-				}
-			);
+            
+            if(f.params.clickableBG !== false) {
+                smoke.listen(
+                    document.getElementById('smoke-bg-'+f.newid),
+                    "click", 
+                    function () {
+                        smoke.destroy(f.type, f.newid);
+                        if (f.type === 'prompt' || f.type === 'confirm' || f.type === 'quiz') {
+                            f.callback(false);
+                        } else if (f.type === 'alert' && typeof f.callback !== 'undefined') {
+                            f.callback();
+                        }	
+                    }
+                );
+            }
 		
 		
 			switch (f.type) {
