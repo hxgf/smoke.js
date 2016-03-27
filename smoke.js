@@ -86,7 +86,7 @@
 			                    button = f.params['button_' + i];
 			                while (button) {
 						buttons +=
-							'<button class="quiz-button" id="'+f.type+'-ok1-'+f.newid+'">'+button+'</button>';
+							'<button class="quiz-button" id="'+f.type+'-ok' + i + '-'+f.newid+'">'+button+'</button>';
 						i++;
 						button = f.params['button_' + i];
 			                }
