@@ -255,38 +255,22 @@
 				}
 			);
 	
-	
-			if (a = document.getElementById('quiz-ok1-'+f.newid))
-			smoke.listen(
-				a,
-				"click", 
-				function () {
-					smoke.destroy(f.type, f.newid);
-					f.callback(a.innerHTML);
-				}
-			);
-	
-	
-			if (b = document.getElementById('quiz-ok2-'+f.newid))
-			smoke.listen(
-				b,
-				"click", 
-				function () {
-					smoke.destroy(f.type, f.newid);
-					f.callback(b.innerHTML);
-				}
-			);
-	
-	
-			if (c = document.getElementById('quiz-ok3-'+f.newid))
-			smoke.listen(
-				c,
-				"click", 
-				function () {
-					smoke.destroy(f.type, f.newid);
-					f.callback(c.innerHTML);
-				}
-			);
+			var i = 1;
+			var process = function() {
+			    var el = document.getElementById('quiz-ok' + i + '-'+f.newid)
+			    if (!el) return;
+	    			smoke.listen(
+	    				el,
+	    				"click",
+	    				function () {
+	    					smoke.destroy(f.type, f.newid);
+	    					f.callback(el.innerHTML);
+	    				}
+	    			);
+	    			i++;
+	    			process();
+			};
+			process();
 	
 			document.onkeyup = function (e) {
 				if (!e) {
