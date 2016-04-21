@@ -1,6 +1,9 @@
 {
   "name": "smoke.js",
-  "main": "system for javascript",
+  "main": [
+    "smoke.js",
+    "smoke.css"
+  ],
   "version": "0.1.3",
   "homepage": "http://smoke-js.com/",
   "authors": [
