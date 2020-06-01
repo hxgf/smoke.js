@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Smoke.js Demo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../smoke.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="jumbotron">
+            <div class="row marketing">
+                <div class="col-lg-12">
+                    <a class="btn btn-default" id="alert" href="#" role="button">Alert</a>
+                    <a class="btn btn-primary" id="confirm" href="#" role="button">Confirm</a>
+                    <a class="btn btn-success" id="prompt" href="#" role="button">Prompt</a>
+                    <a class="btn btn-info" id="quiz" href="#" role="button">Quiz</a>
+                    <a class="btn btn-danger" id="signal" href="#" role="button">Signal</a>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="../smoke.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $('#alert').on('click', function (e) {
+                smoke.alert("Can I ask you a question?", function(e){
+
+                }, {
+                	ok: "Yep",
+                	cancel: "Nope",
+                	classname: "custom-class"
+                });
+            });
+
+            $('#confirm').on('click', function() {
+                smoke.confirm("Are you sure?", function(e){
+                	if (e) {
+                        // Do things with click
+                	} else {
+                        // Do other things
+                	}
+                }, {
+                	ok: "Yep",
+                	cancel: "Nope",
+                	classname: "custom-class",
+                	reverseButtons: true
+                });
+            });
+
+            $('#prompt').on('click', function() {
+                smoke.prompt("What's for dinner?", function(e){
+                    if (e) {
+                        // Do things with click
+                    } else {
+                        // Do other things
+                    }
+                }, {
+                    ok: "Yes",
+                    cancel: "No",
+                    classname: "custom-class",
+                    reverseButtons: true,
+                    value: "existential dread"
+                });
+            });
+
+            $('#quiz').on('click', function() {
+                smoke.quiz("Which is your favorite?", function(e){
+                    if (e === 'A') {
+                        // Do things with click
+                    }
+                }, {
+                    button_1: "A",
+                    button_2: "B",
+                    button_3: "C",
+                    button_4: "D",
+                    button_cancel: "Nothing"
+                });
+            });
+
+            $('#signal').on('click', function() {
+                smoke.signal("Congratulations! You have just one a free iPod Touch!", function(e){
+
+                }, {
+                	duration: 3000,
+                	classname: "custom-class"
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
