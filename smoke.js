@@ -81,21 +81,12 @@
 						'<button id="alert-ok-'+f.newid+'">'+ok+'</button>';
 				}
 				 else if (f.type === 'quiz') {
-	
-					if (f.params.button_1) {
-						buttons +=
-							'<button class="quiz-button" id="'+f.type+'-ok1-'+f.newid+'">'+f.params.button_1+'</button>';
-					}
-	
-					if (f.params.button_2) {
-						buttons +=
-							'<button class="quiz-button" id="'+f.type+'-ok2-'+f.newid+'">'+f.params.button_2+'</button>';
-					}
-	
-					if (f.params.button_3) {
-						buttons +=
-							'<button class="quiz-button" id="'+f.type+'-ok3-'+f.newid+'">'+f.params.button_3+'</button>';
-					}
+	        if(f.params.options instanceof Array) {
+	          for(var i=0; i<f.params.options.length; i++) {
+					 	  buttons +=
+						 	  '<button class="quiz-button '+f.type+'-ok-'+f.newid+'" id="'+f.type+'-ok'+i+'-'+f.newid+'" data-value="'+f.params.options[i].value+'">'+f.params.options[i].label+'</button>';
+	          }
+	        }
 					if (f.params.button_cancel) {
 						buttons +=
 							'<button id="'+f.type+'-cancel-'+f.newid+'" class="cancel">'+f.params.button_cancel+'</button>';
@@ -249,7 +240,7 @@
 		},
 		
 		finishbuildQuiz: function (e, f, box) {
-			var a, b, c;
+			var a;
 			
 			smoke.listen(
 				document.getElementById('quiz-cancel-' + f.newid),
@@ -261,37 +252,16 @@
 				}
 			);
 	
-	
-			if (a = document.getElementById('quiz-ok1-'+f.newid))
+	   
+			if (a = document.getElementsByClassName('quiz-ok-'+f.newid))
+		  for(var i=0; i<a.length; i++)
 			smoke.listen(
-				a,
+				a[i],
 				"click", 
-				function () {
+				(function () {
 					smoke.destroy(f.type, f.newid);
-					f.callback(a.innerHTML);
-				}
-			);
-	
-	
-			if (b = document.getElementById('quiz-ok2-'+f.newid))
-			smoke.listen(
-				b,
-				"click", 
-				function () {
-					smoke.destroy(f.type, f.newid);
-					f.callback(b.innerHTML);
-				}
-			);
-	
-	
-			if (c = document.getElementById('quiz-ok3-'+f.newid))
-			smoke.listen(
-				c,
-				"click", 
-				function () {
-					smoke.destroy(f.type, f.newid);
-					f.callback(c.innerHTML);
-				}
+					f.callback(this.getAttribute('data-value'));
+				}).bind(a[i])
 			);
 	
 			document.onkeyup = function (e) {
