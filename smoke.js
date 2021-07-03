@@ -81,7 +81,15 @@
 						'<button id="alert-ok-'+f.newid+'">'+ok+'</button>';
 				}
 				 else if (f.type === 'quiz') {
-	
+					 
+					if (f.params.buttons) {
+						for (var i=0; i < f.params.buttons.length; i++) {
+							var btn = f.params.buttons[i];
+							buttons +=
+								'<button class="quiz-button" data-quiz-value="'+btn.value+'" id="'+f.type+'-ok'+btn.value+'-'+f.newid+'">'+btn.name+'</button>';
+						}
+					}
+					 
 					if (f.params.button_1) {
 						buttons +=
 							'<button class="quiz-button" id="'+f.type+'-ok1-'+f.newid+'">'+f.params.button_1+'</button>';
@@ -261,7 +269,21 @@
 				}
 			);
 	
-	
+			if (f.params.buttons) {
+				for (var i=0; i < f.params.buttons.length; i++) {
+					var btn = f.params.buttons[i];
+					smoke.listen(
+						document.getElementById('quiz-ok'+btn.value+'-'+f.newid),
+						"click", 
+						function () {
+							smoke.destroy(f.type, f.newid);
+							f.callback(this);
+						}
+					);
+				}
+				
+			}
+			
 			if (a = document.getElementById('quiz-ok1-'+f.newid))
 			smoke.listen(
 				a,
