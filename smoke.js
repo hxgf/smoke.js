@@ -81,21 +81,15 @@
 						'<button id="alert-ok-'+f.newid+'">'+ok+'</button>';
 				}
 				 else if (f.type === 'quiz') {
-	
-					if (f.params.button_1) {
+	                
+			                var i = 1,
+			                    button = f.params['button_' + i];
+			                while (button) {
 						buttons +=
-							'<button class="quiz-button" id="'+f.type+'-ok1-'+f.newid+'">'+f.params.button_1+'</button>';
-					}
-	
-					if (f.params.button_2) {
-						buttons +=
-							'<button class="quiz-button" id="'+f.type+'-ok2-'+f.newid+'">'+f.params.button_2+'</button>';
-					}
-	
-					if (f.params.button_3) {
-						buttons +=
-							'<button class="quiz-button" id="'+f.type+'-ok3-'+f.newid+'">'+f.params.button_3+'</button>';
-					}
+							'<button class="quiz-button" id="'+f.type+'-ok' + i + '-'+f.newid+'">'+button+'</button>';
+						i++;
+						button = f.params['button_' + i];
+			                }
 					if (f.params.button_cancel) {
 						buttons +=
 							'<button id="'+f.type+'-cancel-'+f.newid+'" class="cancel">'+f.params.button_cancel+'</button>';
@@ -261,38 +255,22 @@
 				}
 			);
 	
-	
-			if (a = document.getElementById('quiz-ok1-'+f.newid))
-			smoke.listen(
-				a,
-				"click", 
-				function () {
-					smoke.destroy(f.type, f.newid);
-					f.callback(a.innerHTML);
-				}
-			);
-	
-	
-			if (b = document.getElementById('quiz-ok2-'+f.newid))
-			smoke.listen(
-				b,
-				"click", 
-				function () {
-					smoke.destroy(f.type, f.newid);
-					f.callback(b.innerHTML);
-				}
-			);
-	
-	
-			if (c = document.getElementById('quiz-ok3-'+f.newid))
-			smoke.listen(
-				c,
-				"click", 
-				function () {
-					smoke.destroy(f.type, f.newid);
-					f.callback(c.innerHTML);
-				}
-			);
+			var i = 1;
+			var process = function() {
+			    var el = document.getElementById('quiz-ok' + i + '-'+f.newid)
+			    if (!el) return;
+	    			smoke.listen(
+	    				el,
+	    				"click",
+	    				function () {
+	    					smoke.destroy(f.type, f.newid);
+	    					f.callback(el.innerHTML);
+	    				}
+	    			);
+	    			i++;
+	    			process();
+			};
+			process();
 	
 			document.onkeyup = function (e) {
 				if (!e) {
